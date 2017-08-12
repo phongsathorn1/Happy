@@ -1,0 +1,230 @@
+/*@font-face {
+    font-family: bannerfont;
+	src: url('public/fonts/Chivo-Light.woff');
+}
+@font-face {
+    font-family: universalfont;
+	src: url('public/fonts/GeosansLight.ttf') format("truetype");
+}*/
+@font-face {
+  font-family: icon;
+  src: url("../fonts/MaterialIcons-Regular.woff"); }
+html {
+  font-family: universalfont;
+  font-size: 18pt;
+  padding: 0;
+  margin: 0; }
+
+body {
+  padding: 0;
+  margin: 0; }
+
+banner {
+  font-family: bannerfont;
+  font-size: 3em;
+  text-align: justify;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  background: #FFDF40;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #FFDF40, #FF8359);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #FFDF40, #FF8359);
+  /* Standard syntax */ }
+
+.container {
+  position: relative;
+  height: 500px;
+  min-width: 250px;
+  max-width: 300px;
+  width: 30%;
+  margin: 2em auto;
+  border: none;
+  padding: 2em 0 0 0;
+  text-align: center; }
+
+footofdiv {
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  background: aqua;
+  display: block;
+  padding: 0.3em 0em;
+  background: #FFDF40;
+  background: -webkit-linear-gradient(left top, #FFDF40, #FF8359);
+  background: -o-linear-gradient(bottom right, #FFDF40, #FF8359);
+  background: -moz-linear-gradient(bottom right, #FFDF40, #FF8359);
+  background: linear-gradient(to bottom right, #FFDF40, #FF8359);
+  border-radius: 0 0 20px 20px; }
+
+#login {
+  margin: 1em 10px 10px 10px; }
+
+#login input[type="password"], #login input[type="text"] {
+  width: 100%;
+  padding: 1em;
+  border: solid 1px #e0e0e0;
+  border-radius: 10px;
+  margin-top: 1em; }
+
+@keyframes colorfade {
+  from {
+    filter: grayscale(1); }
+  to {
+    filter: grayscale(0); } }
+#login input[type="submit"] {
+  color: #fff;
+  border: solid 1px #e0e0e0;
+  padding: 1em 2em;
+  border-radius: 10px;
+  margin: 0 0 4em 0;
+  background: #e0e0e0;
+  width: 100%; }
+
+#login input[type="submit"]:hover {
+  animation-name: colorfade;
+  animation-timing-function: ease-in-out;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  background: #FFDF40;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #FFDF40, #FF8359);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #FFDF40, #FF8359);
+  /* Standard syntax */ }
+
+nav {
+  height: 2.5em;
+  margin: 0;
+  z-index: 10;
+  color: #fff;
+  padding: 0.5em 0em;
+  display: block;
+  width: 100%;
+  background: #FFDF40;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #FFDF40, #FF8359);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #FFDF40, #FF8359);
+  /* Standard syntax */ }
+
+nav ul {
+  list-style-type: none;
+  margin: 0 1em;
+  padding: 0; }
+
+nav ul li {
+  float: left;
+  display: block; }
+
+nav input[type="submit"] {
+  color: #e0e0e0;
+  border: solid 1px #e0e0e0;
+  padding: 0.5em 0.5em;
+  border-radius: 10px;
+  background: #fff; }
+
+nav input[type="submit"]:hover {
+  animation-name: colorfade;
+  animation-timing-function: ease-in-out;
+  animation-duration: .1s;
+  animation-fill-mode: both;
+  background: #FFDF40;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #FFDF40, #FF8359);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #FFDF40, #FF8359);
+  /* Standard syntax */ }
+
+#cover {
+  display: block;
+  background: #FFDF40;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #FFDF40, #FF8359);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #FFDF40, #FF8359);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #FFDF40, #FF8359);
+  /* Standard syntax */
+  padding: 50px 0;
+  box-shadow: 0 5px 20px rgba(255, 145, 85, 0.5); }
+
+#cover div {
+  color: #fff;
+  text-align: center;
+  margin: auto; }
+
+ul {
+  list-style-type: none;
+  margin: 0 1em;
+  padding: 0; }
+
+.precrad {
+  padding: 3em; }
+
+.card {
+  max-width: 400px;
+  margin: auto;
+  height: 400px;
+  position: relative;
+  background: #fff;
+  color: #FF8359 !important;
+  display: block;
+  padding: 0;
+  border: 1px solid #FFDF40; }
+
+.card .img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 260px;
+  width: 100%;
+  margin: 0;
+  float: left; }
+
+.card .text {
+  text-align: justify;
+  font-size: 14pt;
+  float: left;
+  height: 100px;
+  margin: 1em;
+  overflow: hidden; }
+
+.card div {
+  margin: 0 1em; }
+
+.icon {
+  font-family: icon;
+  font-size: 0.6em;
+  border-radius: 50% !important;
+  border-color: #FF8359;
+  color: #FF8359 !important;
+  font-weight: bold; }
+
+.icon:hover {
+  color: #fff !important; }
+
+@media only screen and (min-width: 870px) {
+  .printusr:after {
+    content: ' is so happy'; } }
