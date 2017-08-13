@@ -14,11 +14,22 @@ class UploadController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show upload page.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('upload');
     }
 
+    /**
+     * Show uploaded image and prepare for post.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function post(Request $request)
     {
         $this->validate($request, [
@@ -39,6 +50,12 @@ class UploadController extends Controller
         return view('create', ['folder' => md5(Auth::id()), 'photo' => $filename]);
     }
 
+    /**
+     * Validate incoming request and post it.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $this->validate($request, [

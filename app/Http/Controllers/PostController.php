@@ -14,14 +14,24 @@ class PostController extends Controller
         $this->middleware('auth')->except('view');
     }
 
+    /**
+     * View the post by post_id.
+     *
+     * @param int $post_id
+     * @return \Illuminate\Http\Response
+     */
     public function view($post_id)
     {
         $post = Post::find($post_id);
         return view('post', ['folder' => md5($post->user->id), 'post' => $post]);
     }
 
-    //request auth
-    //we will make it for ajax in the future
+    /**
+     * Like function.
+     *
+     * @param int $post_id
+     * @return \Illuminate\Http\Response
+     */
     public function like($post_id)
     {
         if(Likes::where([['user_id', Auth::id()], ['post_id', $post_id]])->count() == 0)
@@ -35,6 +45,12 @@ class PostController extends Controller
         return back();
     }
 
+    /**
+     * Unlike function.
+     *
+     * @param int $post_id
+     * @return \Illuminate\Http\Response
+     */
     public function unlike($post_id)
     {
         $like = Likes::where([['user_id', Auth::id()], ['post_id', $post_id]]);
@@ -46,6 +62,12 @@ class PostController extends Controller
         return back();
     }
 
+    /**
+     * Delete the post.
+     *
+     * @param int $post_id
+     * @return \Illuminate\Http\Response
+     */
     public function delete($post_id)
     {
         $post = Post::find($post_id);
@@ -58,6 +80,12 @@ class PostController extends Controller
         return abort(403, "You don't have permission");
     }
 
+    /**
+     * Edit the post.
+     *
+     * @param int $post_id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($post_id)
     {
         $post = Post::find($post_id);
@@ -69,6 +97,13 @@ class PostController extends Controller
         return abort(403, "You don't have permission");
     }
 
+    /**
+     * Save change from edit page.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $post_id
+     * @return \Illuminate\Http\Response
+     */
     public function save(Request $request, $post_id)
     {
         $this->validate($request, [

@@ -14,6 +14,12 @@ class FollowController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Validate incoming request and create user follow
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -41,6 +47,12 @@ class FollowController extends Controller
         return back();
     }
 
+    /**
+     * Unfollow user
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function delete(Request $request)
     {
         Follower::where([['user_id', Auth::id()], ['follow_id', $request->user_id]])->delete();

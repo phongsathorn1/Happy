@@ -16,6 +16,12 @@ class ProfileController extends Controller
         $this->middleware('auth')->except('view');
     }
 
+    /**
+     * View user profile
+     *
+     * @param string $username
+     * @return \Illuminate\Http\Response
+     */
     public function view($username)
     {
         $profile = User::where('username', $username)->first();
@@ -37,6 +43,11 @@ class ProfileController extends Controller
         ]);
     }
 
+    /**
+     * Edit profile
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function edit()
     {
         $user = Auth::user();
@@ -46,6 +57,12 @@ class ProfileController extends Controller
         return view('profile.edit', ['user' => $user]);
     }
 
+    /**
+     * Save edit profile
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function save_edit(Request $request){
         $this->validate($request, [
             'name' => 'required',
@@ -76,11 +93,22 @@ class ProfileController extends Controller
         return back();
     }
 
+    /**
+     * Change password
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function password_change()
     {
         return view('profile.password');
     }
 
+    /**
+     * Validate incoming request and save password change
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function save_password(Request $request)
     {
         $this->validate($request, [

@@ -27,26 +27,41 @@ class User extends Authenticatable
         'password', 'remember_token', 'created_at', 'updated_at', 'is_private', 'email', 'id'
     ];
 
+    /**
+     * Get posts from user.
+     */
     public function post()
     {
         return $this->hasMany('App\Post');
     }
 
+    /**
+     * Get user following.
+     */
     public function followTo()
     {
         return $this->hasMany('App\Follower');
     }
 
+    /**
+     * Get user follower.
+     */
     public function follower()
     {
         return $this->hasMany('App\Follower', 'follow_id');
     }
 
+    /**
+     * Get all user comments.
+     */
     public function comments()
     {
         return $this->hasMany('App\Comment');
     }
 
+    /**
+     * Get all user likes.
+     */
     public function likes()
     {
         return $this->hasMany('App\Likes');

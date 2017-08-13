@@ -20,7 +20,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the account's profile.
      *
      * @return \Illuminate\Http\Response
      */
@@ -33,6 +33,11 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Show timeline page.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function timeline()
     {
         return view('timeline', ['posts' => Follower::Timeline(Auth::id())]);

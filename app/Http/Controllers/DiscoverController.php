@@ -7,6 +7,11 @@ use App\Post;
 
 class DiscoverController extends Controller
 {
+    /**
+     * Discover page index
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $posts = Post::Discover();

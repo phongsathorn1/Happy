@@ -13,6 +13,12 @@ class CommentsController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Create the comment
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function create(Request $request)
     {
         $this->validate($request, [
