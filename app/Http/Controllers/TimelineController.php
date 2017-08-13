@@ -14,7 +14,7 @@ class TimelineController extends Controller
         $posts = collect();
         foreach ($followers as $follower)
         {
-            $posts = $posts->merge($follower)
+            $posts = $posts->merge($follower);
         }
     }
 }
