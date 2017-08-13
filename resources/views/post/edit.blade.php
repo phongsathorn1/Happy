@@ -21,13 +21,22 @@
                         <a href="{{ url('user/' . $post->user->username) }}">
                             <b>{{ $post->user->name }}</b>
                         </a><br>
+                        
                         <div class="description-box">
                             <form action="{{ url('posts/' . $post->id . '/edit') }}" method="POST">
                                 {{ csrf_field() }}
-                                <textarea name="description">
-                                    {{ $post->description }}
-                                </textarea>
-                                <input type="submit" class="btn btn-default" value="edit">
+                                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                    <textarea name="description" class="form-control">{{ $post->description }}</textarea>
+
+                                    @if ($errors->has('description'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-default" value="edit">
+                                </div>
                             </form>
                         </div>
                     </div>

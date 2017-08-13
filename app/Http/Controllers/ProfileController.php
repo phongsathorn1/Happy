@@ -10,6 +10,12 @@ use App\Follower;
 
 class ProfileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('view');
+    }
+
     public function view($username)
     {
         $profile = User::where('username', $username)->first();
@@ -41,6 +47,14 @@ class ProfileController extends Controller
     }
 
     public function save_edit(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+            'surname' => 'required',
+            'username' => 'required|unique:users',
+            'email' => 'required|string|email|max:225|unique:users',
+            'password' => 'required'
+        ]);
+
         if(Hash::check($request->password, Auth::user()->password))
         {
             $filename = NULL;
@@ -69,6 +83,11 @@ class ProfileController extends Controller
 
     public function save_password(Request $request)
     {
+        $this->validate($request, [
+            'password' => 'required',
+            'new-password' => 'required|confirmed'
+        ]);
+
         if(Hash::check($request->password, Auth::user()->password))
         {
             User::find(Auth::id())->update([

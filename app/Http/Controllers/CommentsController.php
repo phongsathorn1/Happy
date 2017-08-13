@@ -15,6 +15,11 @@ class CommentsController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, [
+            'post_id' => 'required',
+            'comment' => 'required'
+        ]);
+
         Comment::create([
             'user_id' => Auth::id(),
             'post_id' => $request->post_id,

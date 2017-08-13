@@ -71,6 +71,10 @@ class PostController extends Controller
 
     public function save(Request $request, $post_id)
     {
+        $this->validate($request, [
+            'description' => 'required'
+        ]);
+
         $post = Post::find($post_id);
         if($post->user_id == Auth::id())
         {

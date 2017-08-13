@@ -51,17 +51,20 @@
                                         <input type="submit" value="Follow" class="btn btn-success">
                                     </form>
                                     @endif
-                                @else
-                                <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="profile-action" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        More
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="profile-action">
-                                        <li><a href="{{ route('edit_profile') }}">Edit profile</a></li>
-                                        <li><a href="{{ route('change_password') }}">Change password</a></li>
-                                    </ul>
-                                </div>
+                                @endif
+                                @if(Auth::check())
+                                    @if(Auth::id() == $profile->id)
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="profile-action" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            More
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="profile-action">
+                                            <li><a href="{{ route('edit_profile') }}">Edit profile</a></li>
+                                            <li><a href="{{ route('change_password') }}">Change password</a></li>
+                                        </ul>
+                                    </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>

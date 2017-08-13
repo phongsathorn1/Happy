@@ -16,6 +16,10 @@ class FollowController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, [
+            'follow_id' => 'required'
+        ]);
+
         if(User::find($request->user_id) != null and $request->user_id != Auth::id())
         {
             $data = [

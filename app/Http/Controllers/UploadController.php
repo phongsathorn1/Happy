@@ -21,6 +21,10 @@ class UploadController extends Controller
 
     public function post(Request $request)
     {
+        $this->validate($request, [
+            'picture' => 'mimes:jpg,jpeg,png'
+        ]);
+
         $filename = uniqid();
         if(!$request->hasFile('picture'))
         {
@@ -37,6 +41,11 @@ class UploadController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'photo' => 'required',
+            'description' => 'required'
+        ]);
+
         $description = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $request->description);
         Post::create([
             'user_id' => Auth::id(),

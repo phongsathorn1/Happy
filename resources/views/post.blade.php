@@ -37,9 +37,20 @@
             <div class="comments-box">
                 <form action="{{ url('comment') }}" method="POST">
                     {{ csrf_field() }}
-                    <textarea name="comment"></textarea><br>
+                    <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                        <textarea name="comment" class="form-control"></textarea>
+
+                        @if ($errors->has('comment'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('comment') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+
                     <input type="hidden" name="post_id" value="{{ $post->id }}">
-                    <input type="submit" value="comment" class="btn btn-success">
+                    <div class="form-group">
+                        <input type="submit" value="comment" class="btn btn-success">
+                    </div>
                 </form>
             </div>
             @endif
