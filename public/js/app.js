@@ -127,7 +127,7 @@ function like_button(post_form) {
         url: post_form.attr('action'),
         data: post_form.serialize()
     }).fail(function () {
-        return alert('Error!');
+        return alert("An error occurred, please refresh the page.");
     });
 }
 
