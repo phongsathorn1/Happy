@@ -17,7 +17,7 @@
                     </a>
                     @include('components.button')
                     <div class="description clearfix">
-                        <div class="col-xs-3 col-md-1">
+                        <div class="col-xs-1 col-md-1">
                             <div class="avatar-post">
                                 @if($post->user->picture != NULL)
                                 <div class="avatar" style="background-image: url('{{ url('storage/images/avatars/' . $post->user->picture . '.jpg') }}')"></div>
@@ -26,7 +26,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-xs-9 col-md-11">
+                        <div class="col-xs-11 col-md-11">
                             <div class="description-container">
                                 <b>{{ $post->user->name }}</b><br>
                                 <p>{{ $post->description }}</p>
