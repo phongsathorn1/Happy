@@ -41,8 +41,6 @@ class PostController extends Controller
                 'user_id' => Auth::id()
             ]);
         }
-
-        return back();
     }
 
     /**
@@ -58,8 +56,6 @@ class PostController extends Controller
         {
             $like->delete();
         }
-
-        return back();
     }
 
     /**

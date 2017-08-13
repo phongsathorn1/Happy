@@ -30,4 +30,34 @@ $(window).ready(function(){
     $('.delete-menu').click(function(){
         return confirm("Are you sure you want to delete this post?\nYou cannot undo this action.");
     });
+
+    $('.post-form').submit(function(e){
+        e.preventDefault();
+        var post_form = $(this);
+        if(post_form.find(".like-button > .fa").hasClass("fa-heart-o"))
+        {
+            like_button(post_form);
+            var post_action = post_form.attr('action');
+            post_form.find(".like-button > .fa").addClass("fa-heart").removeClass("fa-heart-o");
+            post_form.find(".like-button > .like-count").html(parseInt(post_form.find(".like-button > .like-count").text()) + 1);
+            post_form.attr('action', post_action.replace('like', 'unlike'));
+        }else{
+            like_button(post_form);
+            var post_action = post_form.attr('action');
+            post_form.find(".like-button > .fa").addClass("fa-heart-o").removeClass("fa-heart");
+            post_form.find(".like-button > .like-count").html(parseInt(post_form.find(".like-button > .like-count").text()) - 1);            
+            post_form.attr('action', post_action.replace('unlike', 'like'));
+        }
+    });
 });
+
+function like_button(post_form)
+{
+    $.ajax({
+        type: post_form.attr('method'),
+        url: post_form.attr('action'),
+        data: post_form.serialize(),
+    }).fail(function(){
+        return alert('Error!');
+    });
+}
