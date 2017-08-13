@@ -27,7 +27,7 @@ Route::get('/user/{username}', 'ProfileController@view');
 Route::get('/profile/edit', 'ProfileController@edit')->name('edit_profile');
 Route::post('/profile/edit', 'ProfileController@save_edit');
 Route::get('/profile/change/password', 'ProfileController@password_change')->name('change_password');
-Route::post('/profile/change/password', 'ProfileControler@save_password');
+Route::post('/profile/change/password', 'ProfileController@save_password');
 Route::get('/posts/{post_id}/delete', 'PostController@delete');
 Route::get('/posts/{post_id}/edit', 'PostController@edit');
 Route::post('/posts/{post_id}/edit', 'PostController@save');
