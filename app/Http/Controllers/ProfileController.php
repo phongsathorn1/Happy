@@ -79,7 +79,7 @@ class ProfileController extends Controller
             if($request->hasFile('picture'))
             {
                 $filename = uniqid();
-                $request->picture->storeAs('public/images/avatars', $filename.'.jpg');
+                $request->file('picture')->move(public_path('storage/images/avatars'), $filename.'.jpg');
             }
 
             User::find(Auth::id())->update([

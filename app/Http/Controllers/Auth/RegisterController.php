@@ -66,10 +66,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $avatar = NULL;
-        if($data['picture'])
+        if(isset($data['picture']))
         {
             $filename = uniqid();
-            $data['picture']->storeAs('public/images/avatars', $filename.'.jpg');
+            $data['picture']->move(public_path('storage/images/avatars'), $filename.'.jpg');
             $avatar = $filename;
         }
 

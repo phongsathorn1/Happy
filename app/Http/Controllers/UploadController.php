@@ -45,7 +45,7 @@ class UploadController extends Controller
         }
         else
         {
-            $request->picture->storeAs('public/images/' . md5(Auth::id()), $filename.'.jpg');
+            $request->file('picture')->move(public_path('storage/images/' . md5(Auth::id())), $filename.'.jpg');
         }
         return view('create', ['folder' => md5(Auth::id()), 'photo' => $filename]);
     }
