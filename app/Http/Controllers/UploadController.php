@@ -47,7 +47,56 @@ class UploadController extends Controller
         {
             $request->file('picture')->move(public_path('storage/images/' . md5(Auth::id())), $filename.'.jpg');
         }
-        return view('create', ['folder' => md5(Auth::id()), 'photo' => $filename]);
+
+        /**
+         * Call to Emotion API and get result.
+         */
+        $image_url = url('storage/images/' . md5(Auth::id()) .'/' . $filename . '.jpg');
+        $subscribe_key = env('EMOTION_API_KEY');
+
+        $headers = [
+            'Content-Type: application/json',
+            'Ocp-Apim-Subscription-Key: '.$subscribe_key
+        ];
+        $data_string = ['url' => $image_url];
+        $data_string = json_encode($data_string);
+        $ch = curl_init('https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        $data = curl_exec($ch);
+        curl_close($ch);
+
+        $results = [];
+        $emotion_results = json_decode($data, true);
+        foreach($emotion_results as $value){
+            $result = array_keys($value["scores"], max($value["scores"]));
+            array_push($results, $result[0]);
+        }
+
+        $emotion_pass = true;
+        foreach($results as $result)
+        {
+            if($result != "happiness" && $result != "surprise"){
+                $emotion_pass = false;
+            }
+        }
+
+        $photo_emotion = array_count_values($results);
+        $people_count = count($emotion_results);
+
+        //pass data to view
+        return view('create', [
+            'folder' => md5(Auth::id()),
+            'photo' => $filename,
+            'emotion_pass' => $emotion_pass,
+            'photo_emotion' => $photo_emotion,
+            'people_count' => $people_count
+        ]);
     }
 
     /**

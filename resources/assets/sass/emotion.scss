@@ -1,0 +1,94 @@
+.emotion-badge{
+    margin: 10px 0px;
+}
+
+.emotion-badge-list{
+    width: 50px;
+    border: 2px solid #e0e0e0;
+    float: left;
+    margin-right: 10px;
+}
+
+.emotion-icon-block{
+    height: 50px;
+    padding: 5px;
+    background: #FFFFFF;
+}
+
+.emotion-badge-list.emotion-neutral{
+    background: #00E676;
+    border-color: #00C853;
+}
+
+.emotion-badge-list.emotion-angry{
+    background: #F44336;
+    border-color: #F44336;
+}
+
+.emotion-badge-list.emotion-contempt{
+    background: #7E57C2;
+    border-color: #7E57C2;
+}
+
+.emotion-badge-list.emotion-disgust{
+    background: #795548;
+    border-color: #795548;
+}
+
+.emotion-badge-list.emotion-fear{
+    background: #2196F3;
+    border-color: #2196F3;
+}
+
+.emotion-badge-list.emotion-happiness{
+    background: #FFC107;
+    border-color: #FFC107;
+}
+
+.emotion-badge-list.emotion-sadness{
+    background: #009688;
+    border-color: #009688;
+}
+
+.emotion-badge-list.emotion-surprise{
+    background: #E91E63;
+    border-color: #E91E63;
+}
+
+.emotion-icon{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.emotion-neutral .emotion-icon{
+    background: url('/img/emoji/nature.svg') no-repeat;
+}
+
+.emotion-angry .emotion-icon{
+    background: url('/img/emoji/angry.svg') no-repeat;
+}
+
+.emotion-contempt .emotion-icon{
+    background: url('/img/emoji/contempt.svg') no-repeat;
+}
+
+.emotion-disgust .emotion-icon{
+    background: url('/img/emoji/disgust.svg') no-repeat;
+}
+
+.emotion-fear .emotion-icon{
+    background: url('/img/emoji/fear.svg') no-repeat;
+}
+
+.emotion-happiness .emotion-icon{
+    background: url('/img/emoji/happiness.svg') no-repeat;
+}
+
+.emotion-sadness .emotion-icon{
+    background: url('/img/emoji/sadness.svg') no-repeat;
+}
+
+.emotion-surprise .emotion-icon{
+    background: url('/img/emoji/surprise.svg') no-repeat;
+}
