@@ -28,6 +28,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get social provider.
+     */
+    public function socialProviders(){
+        return $this->hasMany('App\SocialProvider');
+    }
+
+    /**
      * Get posts from user.
      */
     public function post()

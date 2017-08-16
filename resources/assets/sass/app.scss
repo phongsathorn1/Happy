@@ -403,3 +403,35 @@ a .photo-card p{
     color: #C62828;
     font-weight: bold;
 }
+
+.login-panel{
+    margin-top: 20px;
+}
+
+.login-panel .btn{
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px;
+}
+
+.login-panel .btn .fa{
+    padding-right: 10px;
+}
+
+.btn-facebook-login,
+.btn-twitter-login,
+.btn-google-login{
+    color: #FFFFFF;
+}
+
+.btn-facebook-login{
+    background: #4065b3;
+}
+
+.btn-twitter-login{
+    background: #55acee;
+}
+
+.btn-google-login{
+    background: #db4437;
+}

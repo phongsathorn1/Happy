@@ -38,3 +38,7 @@ Route::post('/posts/{post_id}/unlike', 'PostController@unlike');
 
 //Ajax request
 Route::get('/api/search/{keyword}', 'SearchController@search');
+
+//Social Login
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
