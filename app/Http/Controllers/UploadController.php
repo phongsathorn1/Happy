@@ -72,22 +72,28 @@ class UploadController extends Controller
         curl_close($ch);
 
         $results = [];
-        $emotion_results = json_decode($data, true);
-        foreach($emotion_results as $value){
-            $result = array_keys($value["scores"], max($value["scores"]));
-            array_push($results, $result[0]);
-        }
-
         $emotion_pass = true;
-        foreach($results as $result)
-        {
-            if($result != "happiness" && $result != "surprise"){
-                $emotion_pass = false;
+        $emotion_results = json_decode($data, true);
+        $people_count = count($emotion_results);
+
+        if($people_count > 0){
+            foreach($emotion_results as $value){
+                $result = array_keys($value["scores"], max($value["scores"]));
+                array_push($results, $result[0]);
             }
+
+            $emotion_pass = true;
+            foreach($results as $result)
+            {
+                if($result != "happiness" && $result != "surprise"){
+                    $emotion_pass = false;
+                }
+            }
+        }else{
+            $emotion_pass = false;
         }
 
         $photo_emotion = array_count_values($results);
-        $people_count = count($emotion_results);
 
         //pass data to view
         return view('create', [
