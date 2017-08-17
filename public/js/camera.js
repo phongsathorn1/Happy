@@ -18,14 +18,20 @@
   var canvas = null;
   var photo = null;
   var startbutton = null;
+  var submitbutton = null;
+  var camera_error = null;
+  var camera_pause = false;
 
   function startup() {
     video = document.getElementById('video');
     canvas = document.getElementById('canvas');
     photo = document.getElementById('photo');
     startbutton = document.getElementById('startbutton');
+    submitbutton = document.getElementById('submitbutton');
     camera_error = document.getElementById('camera-error');
     camera_pause = false;
+
+    submitbutton.style.display = "none";
 
     navigator.getMedia = ( navigator.getUserMedia ||
                            navigator.webkitGetUserMedia ||
@@ -83,6 +89,7 @@
         else{
           takepicture();
           video.pause();
+          submitbutton.style.display = "inline-block";
           startbutton.innerHTML = "Re-take";
           camera_pause = true;
         }

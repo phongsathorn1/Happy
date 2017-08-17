@@ -49,6 +49,10 @@ $(window).ready(function(){
             post_form.attr('action', post_action.replace('unlike', 'like'));
         }
     });
+
+    $('.camera > .camera-control > #submitbutton').click(function(){
+        $('#camera_form').submit();
+    });
 });
 
 function like_button(post_form)

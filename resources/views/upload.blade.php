@@ -33,6 +33,7 @@
                     <video id="video" class="camera-view">Video stream not available.</video>
                     <div class="camera-control">
                         <button id="startbutton" class="btn btn-success">Take photo</button>
+                        <input type="submit" id="submitbutton" class="btn btn-success" value="Upload!">
                     </div>
                 </div>
             </div>
@@ -47,7 +48,7 @@
         <div class="col-md-12">
             <h1>Upload image by file</h1>
             <div class="card">
-                <form action="{{ url('upload/image') }}" method="POST" enctype="multipart/form-data">
+                <form id="camera_form" action="{{ url('upload/image') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     insert your image:<br>
                     <input type="file" name="picture" accept="image/*"><br>
