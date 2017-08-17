@@ -23,20 +23,20 @@ class FollowController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'follow_id' => 'required'
+            'user_id' => 'required'
         ]);
 
-        if(User::find($request->user_id) != null and $request->user_id != Auth::id())
+        if(User::find($request->user_id) != null && $request->user_id != Auth::id())
         {
             $data = [
                 'user_id' => Auth::id(),
                 'follow_id' => $request->user_id,
-                'accepted' => FALSE
+                'accepted' => false
             ];
 
             if(!User::find($request->user_id)->is_private)
             {
-                $data['accepted'] = TRUE;
+                $data['accepted'] = true;
             }
 
             if(Follower::check(Auth::id(), $request->user_id)->count() <= 0)
@@ -55,6 +55,10 @@ class FollowController extends Controller
      */
     public function delete(Request $request)
     {
+        $this->validate($request, [
+            'user_id' => 'required'
+        ]);
+
         Follower::where([['user_id', Auth::id()], ['follow_id', $request->user_id]])->delete();
         return back();
     }
