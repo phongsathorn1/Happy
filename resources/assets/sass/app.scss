@@ -41,12 +41,27 @@ a:focus, a:hover {
     background: #FFFFFF;
 }
 
+.login{
+    background: url('/img/bg.jpeg') no-repeat;
+    background-size: cover;
+}
+
+.login-page{
+    background: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.33);
+}
+
 .login-page h1{
     text-align: center;
 }
 
 .login-page p{
     text-align: center;
+}
+
+.login-page .login-description{
+    padding-top: 15px;
 }
 
 .login-page .left-headline{
@@ -60,6 +75,10 @@ a:focus, a:hover {
     position: relative;
     overflow: hidden;
     width: 100%;
+}
+
+.img-block{
+    position: relative;
 }
 
 .img-box img{
@@ -302,6 +321,7 @@ a .photo-card p{
     font-size: 18px;
     background: #E91E63;
     color: #FFFFFF;
+    border-radius: 15px;
     display: inline-block;
     margin-bottom: 5px;
     padding: 0px 10px;
@@ -435,3 +455,4 @@ a .photo-card p{
 .btn-google-login{
     background: #db4437;
 }
+

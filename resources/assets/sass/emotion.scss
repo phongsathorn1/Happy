@@ -1,3 +1,12 @@
+$happy-color: #FFC107;
+$nauture-color: #00C853;
+$angry-color: #F44336;
+$contempt-color: #7E57C2;
+$disgust-color: #795548;
+$fear-color: #2196F3;
+$sadness-color: #009688;
+$surprise-color: #E91E63;
+
 .emotion-badge{
     margin: 10px 0px;
 }
@@ -21,43 +30,43 @@
 }
 
 .emotion-badge-list.emotion-neutral{
-    background: #00E676;
-    border-color: #00C853;
+    background: $nauture-color;
+    border-color: $nauture-color;
 }
 
 .emotion-badge-list.emotion-angry{
-    background: #F44336;
-    border-color: #F44336;
+    background: $angry-color;
+    border-color: $angry-color;
 }
 
 .emotion-badge-list.emotion-contempt{
-    background: #7E57C2;
-    border-color: #7E57C2;
+    background: $contempt-color;
+    border-color: $contempt-color;
 }
 
 .emotion-badge-list.emotion-disgust{
-    background: #795548;
-    border-color: #795548;
+    background: $disgust-color;
+    border-color: $disgust-color;
 }
 
 .emotion-badge-list.emotion-fear{
-    background: #2196F3;
-    border-color: #2196F3;
+    background: $fear-color;
+    border-color: $fear-color;
 }
 
 .emotion-badge-list.emotion-happiness{
-    background: #FFC107;
-    border-color: #FFC107;
+    background: $happy-color;
+    border-color: $happy-color;
 }
 
 .emotion-badge-list.emotion-sadness{
-    background: #009688;
-    border-color: #009688;
+    background: $sadness-color;
+    border-color: $sadness-color;
 }
 
 .emotion-badge-list.emotion-surprise{
-    background: #E91E63;
-    border-color: #E91E63;
+    background: $surprise-color;
+    border-color: $surprise-color;
 }
 
 .emotion-icon{
@@ -97,3 +106,41 @@
 .emotion-surprise .emotion-icon{
     background: url('/img/emoji/surprise.svg') no-repeat;
 }
+
+.faceborder{
+    position: absolute;
+    border: 3px solid #3CF;
+}
+
+.faceborder.neutral{
+    border-color: $nauture-color;
+}
+
+.faceborder.angry{
+    border-color: $angry-color;
+}
+
+.faceborder.contempt{
+    border-color: $contempt-color;
+}
+
+.faceborder.disgust{
+    border-color: $disgust-color;
+}
+
+.faceborder.fear{
+    border-color: $fear-color;
+}
+
+.faceborder.happiness{
+    border-color: $happy-color;
+}
+
+.faceborder.sadness{
+    border-color: $sadness-color;
+}
+
+.faceborder.surprise{
+    border-color: $surprise-color;
+}
+
