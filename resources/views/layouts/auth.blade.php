@@ -1,6 +1,6 @@
 @include('components.head')
 
-<body>
+<body class="login">
 <div class="fullscreen-wrap">
     <div class="container">
         <div class="row">

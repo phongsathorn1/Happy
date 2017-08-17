@@ -36,7 +36,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except(['setUsername', 'saveUsername']);
+        $this->middleware('auth')->only(['setUsername', 'saveUsername']);
     }
 
     /**
@@ -80,5 +81,15 @@ class RegisterController extends Controller
             'username' => strtolower($data['username']),
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function setUsername()
+    {
+        return view('profile.username');
+    }
+
+    public function saveUsername()
+    {
+
     }
 }

@@ -61,7 +61,6 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="profile-action">
                                             <li><a href="{{ route('edit_profile') }}">Edit profile</a></li>
-                                            <li><a href="{{ route('change_password') }}">Change password</a></li>
                                         </ul>
                                     </div>
                                     @endif

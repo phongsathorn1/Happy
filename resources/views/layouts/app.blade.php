@@ -52,10 +52,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('user/' . Auth::user()->username) }}">View Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('change_password') }}">Change password</a>
+                                        <a href="{{ url('user/' . (is_null(Auth::user()->username) ? Auth::user()->id : Auth::user()->username)) }}">View Profile</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"

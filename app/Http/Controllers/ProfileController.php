@@ -24,7 +24,7 @@ class ProfileController extends Controller
      */
     public function view($username)
     {
-        $profile = User::where('username', $username)->first();
+        $profile = User::where('username', $username)->orWhere('id', $username)->first();
 
         $followed = FALSE;
         if(Auth::check())
@@ -37,7 +37,7 @@ class ProfileController extends Controller
 
         return view('profile', [
             'folder' => md5($profile->id),
-            'posts' => $profile->post,
+            'posts' => $profile->post()->orderBy('id', 'desc')->get(),
             'profile' => $profile,
             'followed' => $followed
         ]);
@@ -53,7 +53,15 @@ class ProfileController extends Controller
         $user = Auth::user();
         $name = explode(" ", $user->name);
         $user->name = $name[0];
-        $user->surname = $name[1];
+        if(isset($name[1]))
+        {
+            $user->surname = $name[1];
+        }
+        else
+        {
+            $user->surname = " ";
+        }
+        
         return view('profile.edit', ['user' => $user]);
     }
 
@@ -67,62 +75,25 @@ class ProfileController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'surname' => 'required',
-            'username' => 'required',
-            'email' => 'required|string|email|max:225',
-            'password' => 'required'
+            'username' => 'required|alpha_num|max:16',
+            'email' => 'required|string|email|max:225'
         ]);
 
-        if(Hash::check($request->password, Auth::user()->password))
+        $filename = NULL;
+
+        if($request->hasFile('picture'))
         {
-            $filename = NULL;
-
-            if($request->hasFile('picture'))
-            {
-                $filename = uniqid();
-                $request->file('picture')->move(public_path('storage/images/avatars'), $filename.'.jpg');
-            }
-
-            User::find(Auth::id())->update([
-                'name' => $request->name . " " . $request->surname,
-                'username' => $request->username,
-                'email' => $request->email,
-                'picture' => $filename
-            ]);
-            return redirect('/user/' . Auth::user()->username);
+            $filename = uniqid();
+            $request->file('picture')->move(public_path('storage/images/avatars'), $filename.'.jpg');
         }
-        return back();
-    }
 
-    /**
-     * Change password
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function password_change()
-    {
-        return view('profile.password');
-    }
-
-    /**
-     * Validate incoming request and save password change
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function save_password(Request $request)
-    {
-        $this->validate($request, [
-            'password' => 'required',
-            'new-password' => 'required|confirmed'
+        User::find(Auth::id())->update([
+            'name' => $request->name . " " . $request->surname,
+            'username' => strtolower($request->username),
+            'email' => $request->email,
+            'picture' => $filename
         ]);
 
-        if(Hash::check($request->password, Auth::user()->password))
-        {
-            User::find(Auth::id())->update([
-                'password' => Hash::make($request->password)
-            ]);
-            return redirect('/user/' . Auth::user()->username);
-        }
-        return back();
+        return redirect('/user/' . (is_null(Auth::user()->username) ? Auth::user()->id : $request->username));
     }
 }

@@ -42,7 +42,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Redirect the user to the Facebook authentication page.
+     * Redirect the user to the Social authentication page.
      *
      * @return Response
      */
@@ -52,7 +52,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Obtain the user information from Facebook.
+     * Obtain the user information from Social.
      *
      * @return Response
      */

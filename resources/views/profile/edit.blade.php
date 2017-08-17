@@ -88,20 +88,6 @@
                         </div>
                     </div>
 
-                    <h3>Confirm the password</h3>
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <div class="col-md-12">
-                            <label for="password" class="register-label">Password</label>
-                            <input id="password" type="password" class="form-control" name="password" required>
-
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary">
