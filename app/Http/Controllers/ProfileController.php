@@ -75,7 +75,7 @@ class ProfileController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'surname' => 'required',
-            'username' => 'required|alpha_num|max:16',
+            'username' => 'required|alpha_num|min:3|max:16',
             'email' => 'required|string|email|max:225'
         ]);
 

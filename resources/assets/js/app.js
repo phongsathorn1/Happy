@@ -10,13 +10,25 @@ $(window).ready(function(){
                 url: app_url + '/api/search/' + keyword
             }).done(function(data){
                 $.each(data, function(index, result){
-                    $('#search-result').append(`
+                    if(result.username != null)
+                    {
+                        $('#search-result').append(`
                         <li>
                             <a href="${app_url}/user/${result.username}">
                                 <span class="search-name">${result.name}</span>
                                 <span class="search-username">@${result.username}</span>
                             </a>
                         </li>`);
+                    }
+                    else
+                    {
+                        $('#search-result').append(`
+                        <li>
+                            <a href="${app_url}/user/${result.id}">
+                                <span class="search-name">${result.name}</span>
+                            </a>
+                        </li>`);
+                    }
                 });
                 if(data.length === 0){
                     $('#search-result').append('<li class="search-no-item">No results.</li>');

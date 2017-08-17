@@ -34,7 +34,9 @@
                         <div class="row">
                             <div class="profile-header-section">
                                 <h1>{{ $profile->name }}</h1>
+                                @if(!is_null($profile->username))
                                 <span class="username">&#64;{{ $profile->username }}</span>
+                                @endif
                             </div>
                             <div class="profile-header-section">
                                 @if(Auth::check() && $profile->id != Auth::id())

@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -88,8 +89,16 @@ class RegisterController extends Controller
         return view('profile.username');
     }
 
-    public function saveUsername()
+    public function saveUsername(Request $request)
     {
+        $this->validate($request, [
+            'username' => 'required|min:3|max:16|unique:users'
+        ]);
 
+        $user = User::find(Auth::id());
+        $user->username = $request->username;
+        $user->save();
+
+        return redirect()->home();
     }
 }
