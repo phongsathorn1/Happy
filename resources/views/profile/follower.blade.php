@@ -21,7 +21,7 @@
                 <a href="{{ url('user/' . (is_null($follower->user->username) ? $follower->user->id : $follower->user->username)) }}">
                     <b>{{ $follower->user->name }}</b>
                     @if(!is_null($follower->user->username))
-                    <p>@{{ $follower->user->username }}</p>
+                    <p>&#64;{{ $follower->user->username }}</p>
                     @endif
                 </a>
             </div>
