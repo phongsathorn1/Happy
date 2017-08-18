@@ -24,6 +24,8 @@ Route::post('/follow/create', 'FollowController@create');
 Route::post('/follow/unfollow', 'FollowController@delete');
 Route::get('/posts/{post_id}', 'PostController@view');
 Route::get('/user/{username}', 'ProfileController@view');
+Route::get('/user/{username}/follower', 'ProfileController@follower');
+Route::get('/user/{username}/following', 'ProfileController@following');
 Route::get('/profile/edit', 'ProfileController@edit')->name('edit_profile');
 Route::post('/profile/edit', 'ProfileController@save_edit');
 Route::get('/profile/username', 'Auth\RegisterController@setUsername')->name('set_username');

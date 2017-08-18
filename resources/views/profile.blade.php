@@ -76,10 +76,14 @@
                                 {{ $profile->post->count() }} Posts
                             </div>
                             <div class="profile-counter-section">
+                                <a href="{{ url('user/'. (is_null($profile->username) ? $profile->id : $profile->username) . '/follower') }}">
                                 {{ $profile->follower->count() }} Followers
+                                </a>
                             </div>
                             <div class="profile-counter-section">
+                                <a href="{{ url('user/'. (is_null($profile->username) ? $profile->id : $profile->username) . '/following') }}">
                                 {{ $profile->followTo->count() }} Following
+                                </a>
                             </div>
                         </div>
                     </div>

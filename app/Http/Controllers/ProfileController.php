@@ -96,4 +96,34 @@ class ProfileController extends Controller
 
         return redirect('/user/' . (is_null(Auth::user()->username) ? Auth::user()->id : $request->username));
     }
+
+    /**
+     * View follower
+     *
+     * @param string $username
+     * @return \Illuminate\Http\Response
+     */
+    public function follower($username)
+    {
+        $followers = User::where('username', $username)->orWhere('id', $username)->first()->follower()->get();
+        return view('profile.follower', [
+            'title' => 'Follower',
+            'followers' => $followers
+        ]);
+    }
+
+    /**
+     * View following
+     *
+     * @param string $username
+     * @return \Illuminate\Http\Response
+     */
+    public function following($username)
+    {
+        $followers = User::where('username', $username)->orWhere('id', $username)->first()->followTo()->get();
+        return view('profile.follower', [
+            'title' => 'Following',
+            'followers' => $followers
+        ]);
+    }
 }
