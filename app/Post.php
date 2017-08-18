@@ -47,9 +47,7 @@ class Post extends Model
      */
     public function scopeDiscover($query)
     {
-        $posts = $query->inRandomOrder()->get()->filter(function($value, $key){
-            return $value->user->is_private == 0;
-        });
+        $posts = $query->inRandomOrder()->get();
 
         return $posts;
     }

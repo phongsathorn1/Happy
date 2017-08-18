@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -96,7 +97,7 @@ class RegisterController extends Controller
         ]);
 
         $user = User::find(Auth::id());
-        $user->username = $request->username;
+        $user->username = strtolower($request->username);
         $user->save();
 
         return redirect()->home();

@@ -139,6 +139,13 @@ class UploadController extends Controller
             'description' => $description,
         ]);
 
-        return redirect('/user/' . Auth::user()->username);
+        if(is_null(Auth::user()->username))
+        {
+            return redirect('/user/' . Auth::user()->id);
+        }
+        else
+        {
+            return redirect('/user/' . Auth::user()->username);
+        }
     }
 }

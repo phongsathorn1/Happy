@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Socialite;
 use App\SocialProvider;
 use App\User;
@@ -72,13 +73,21 @@ class LoginController extends Controller
         if($social_provider)
         {
             $user = $social_provider->user;
+            Auth::login($user);
+            return redirect()->home();
         }
         else
         {
+            $picture = null;
+            if(!is_null($user_social->getAvatar()))
+            {
+                $filename = uniqid();
+                Storage::disk('public')->put('images/avatars/'.$filename .'.jpg', file_get_contents($user_social->getAvatar()));
+            }
             $user = User::firstOrCreate([
                 'name' => $user_social->getName(),
                 'email' => $user_social->getEmail(),
-                'picture' => null,
+                'picture' => $filename,
                 'username' => null,
                 'password' => bcrypt(rand()),
             ]);
@@ -87,9 +96,9 @@ class LoginController extends Controller
                 'provider_id' => $user_social->getId(),
                 'provider' => $provider
             ]);
-        }
 
-        Auth::login($user);
-        return redirect()->home();
+            Auth::login($user);
+            return redirect()->route('set_username');
+        }
     }
 }
