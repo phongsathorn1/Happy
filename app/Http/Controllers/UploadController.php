@@ -128,7 +128,6 @@ class UploadController extends Controller
         $this->validate($request, [
             'photo' => 'required',
             'people_count' => 'required|integer',
-            'description' => 'required'
         ]);
 
         $description = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $request->description);
