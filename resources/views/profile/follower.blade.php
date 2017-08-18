@@ -11,7 +11,7 @@
             <div class="col-sm-1">
                 <div class="avatar-post">
                     @if(!is_null($follower->user->picture))
-                    <div class="avatar" style="background: url('{{ url('storage/images/avatar/' . $follower->user->picture) }}')"></div>
+                    <div class="avatar" style="background: url('{{ url('storage/images/avatars/' . $follower->user->picture . '.jpg') }}')"></div>
                     @else
                     <div class="avatar" style="background: #CCCCCC"></div>
                     @endif
