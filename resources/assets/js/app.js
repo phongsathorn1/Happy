@@ -1,11 +1,11 @@
 $(window).ready(function(){
     $("#search").keyup(function(){
         var keyword = this.value;
+        $('#search-result').html('');
         if(keyword.length === 0){
             $('#search-result').hide();
         }else{
             $('#search-result').show();
-            $('#search-result').html('');
             $.ajax({
                 url: app_url + '/api/search/' + keyword
             }).done(function(data){

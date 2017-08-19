@@ -42,6 +42,7 @@ class UploadController extends Controller
         {
             $data = explode(',', $request->base_picture);
             $img = base64_decode($data[1]);
+            Storage::disk('public')->makeDirectory('images/' . md5(Auth::id()));
             Image::make(base64_decode($data[1]))->resize(720, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('storage/images/' . md5(Auth::id()) . '/' . $filename.'.jpg'));
@@ -49,6 +50,7 @@ class UploadController extends Controller
         }
         else
         {
+            Storage::disk('public')->makeDirectory('images/' . md5(Auth::id()));
             Image::make($request->file('picture'))->resize(720, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('storage/images/' . md5(Auth::id()) . '/' . $filename.'.jpg'));
