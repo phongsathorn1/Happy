@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 use App\Post;
 
 class UploadController extends Controller
@@ -41,11 +42,16 @@ class UploadController extends Controller
         {
             $data = explode(',', $request->base_picture);
             $img = base64_decode($data[1]);
-            Storage::disk('public')->put('images/' . md5(Auth::id()) . '/' . $filename . '.jpg', $img);
+            Image::make(base64_decode($data[1]))->resize(720, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/images/' . md5(Auth::id()) . '/' . $filename.'.jpg'));
+
         }
         else
         {
-            $request->file('picture')->move(public_path('storage/images/' . md5(Auth::id())), $filename.'.jpg');
+            Image::make($request->file('picture'))->resize(720, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/images/' . md5(Auth::id()) . '/' . $filename.'.jpg'));
         }
 
         /**
@@ -79,6 +85,9 @@ class UploadController extends Controller
         $face_ractangles = [];
 
         if($people_count > 0){
+            if(isset($emotion_results['error'])){
+                return $emotion_results['error']['message'];
+            }
             foreach($emotion_results as $value){
                 $result = array_keys($value["scores"], max($value["scores"]));
                 array_push($results, $result[0]);
