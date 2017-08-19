@@ -29,7 +29,7 @@
                 <b><i class="fa fa-commenting" aria-hidden="true"></i> {{ $post->comments->count() }} comments...</b>
                 @foreach ($post->comments as $comment)
                 <div class="comments-item">
-                    <b><a href="{{ url('user/' . (is_null($comment->user->username) ? $comment->user->id : $comment->user-username)) }}">{{ $comment->user->name }}</a></b> {{ $comment->content }}
+                    <b><a href="{{ url('user/' . (is_null($comment->user->username) ? $comment->user->id : $comment->user->username)) }}">{{ $comment->user->name }}</a></b> {{ $comment->content }}
                 </div>
                 @endforeach
             </div>
