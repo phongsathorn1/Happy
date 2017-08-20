@@ -77,6 +77,7 @@
     </div>
     <div class="footer">
         <span>Developed by Phongsathron Kittiworapanya</span><br>
+        <a href="https://www.facebook.com/Phongsathron.co.th/posts/1606505196079510">Development note</a>
         <div class="contact-list">
             <a href="mailto:phongsathron@outlook.com"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
             <a href="https://www.linkedin.com/in/phongsathron/"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
